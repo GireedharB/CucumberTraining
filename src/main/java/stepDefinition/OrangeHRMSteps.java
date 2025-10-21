@@ -42,4 +42,25 @@ public class OrangeHRMSteps {
         System.out.println("Browser closed Sucessfully");
 
     }
+
+    @Then("User clicks on contact sales button and verifies title of page")
+    public void user_clicks_on_contact_sales_button_and_verifies_title_of_page() {
+        driver.findElement(By.xpath("//li[@class=\"nav-item nav-item-btn btn-contact web-menu\"]")).click();
+        System.out.println("Title of page:"+driver.getTitle());
+        String Expected="Contact Sales | Get in Touch | HR Software | HRMS | OrangeHRM";
+        String Actual= driver.getTitle();
+        Assert.assertEquals(Expected,Actual);
+        System.out.println("Test Sucessfull");
+    }
+    @Then("User fills talk to an expert form.")
+    public void user_fills_talk_to_an_expert_form() {
+        driver.findElement(By.xpath("//input[@name=\"FullName\"]")).sendKeys("Demo User Test");
+        driver.findElement(By.xpath("//input[@name=\"Email\"]")).sendKeys("testuser@gmail.com");
+        driver.findElement(By.xpath("//input[@name=\"Contact\"]")).sendKeys("9890114578");
+        driver.findElement(By.xpath("//input[@name=\"CompanyName\"]")).sendKeys("cg");
+        driver.findElement(By.xpath("//input[@name=\"JobTitle\"]")).sendKeys("Tester");
+        System.out.println("Details Entered Sucessfully");
+
+    }
+
 }
