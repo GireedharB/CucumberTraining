@@ -63,4 +63,18 @@ public class OrangeHRMSteps {
 
     }
 
+    @Then("User clicks on book free demo button and verifies title")
+    public void user_clicks_on_book_free_demo_button_and_verifies_title() {
+        driver.findElement(By.xpath("//li[@class=\"nav-item nav-item-btn web-menu\"]")).click();
+        System.out.println("Form opened sucessfully");
+
+    }
+    @Then("User fills book free demo form.")
+    public void user_fills_book_free_demo_form() {
+        driver.findElement(By.name("FullName")).sendKeys("Test User First");
+        System.out.println("data entered sucessfully");
+
+
+    }
+
 }
