@@ -7,13 +7,25 @@ Feature: Automation Exercise Website
 
 
 
+   @Sc1
   Scenario: Automation Exercise Login
     Then User verify title of page
-
+   @Sc2
   Scenario: Automation Exercise Product page
    Then User verify title of product page
     And User clicks on men category
     And Select Tshirts sub category
+
+  @Sc3
+  Scenario: All broken links on Automation Exercise page.
+    Then User verifies the links on page
+
+  @Sc4
+  Scenario: Contact us page of Automation Exercise.
+    Then User clicks on contact us link
+
+
+
 
 
 
