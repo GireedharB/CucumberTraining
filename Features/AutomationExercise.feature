@@ -16,6 +16,16 @@ Feature: Automation Exercise Website
     And User clicks on men category
     And Select Tshirts sub category
 
+  @Sc3
+  Scenario: All broken links on Automation Exercise page.
+    Then User verifies the links on page
+
+  @Sc4
+  Scenario: Contact us page of Automation Exercise.
+    Then User clicks on contact us link
+
+
+
 
 
 
