@@ -4,6 +4,7 @@ import Hooks.AutomationExerciseHooks;
 import io.cucumber.java.en.*;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.ScreenOrientation;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
@@ -153,6 +154,90 @@ public class AutomationExerciseSteps  {
        }else {
            System.out.println("User is no contact us page");
        }
+       driver.findElement(By.name("name")).sendKeys("Test User");
+        driver.findElement(By.name("email")).sendKeys("testuser@gmail.com");
+        driver.findElement(By.name("subject")).sendKeys("testing conatct form");
+        driver.findElement(By.id("message")).sendKeys("testing conatct form aks");
+        driver.findElement(By.name("upload_file")).sendKeys("C://Users//ADMIN//OneDrive//Desktop//test.txt");
+        driver.findElement(By.name("submit")).click();
+        driver.switchTo().alert().accept();
+        boolean a= driver.findElement(By.xpath("//div[@class='status alert alert-success']")).isDisplayed();
+        System.out.println(a);
+        String text= driver.findElement(By.xpath("//div[@class='status alert alert-success']")).getText();
+        System.out.println(text);
+
+
+
+    }
+    @Then("User clicks on cart  link")
+    public void user_clicks_on_cart_link() throws InterruptedException {
+        driver.findElement(By.xpath("//div[@class=\"col-sm-8\"]/div/ul/li/a[@href=\"/view_cart\"]")).click();
+        if(driver.findElement(By.xpath("//u[text()='here']")).isDisplayed()){
+            driver.findElement(By.xpath("//u[text()='here']")).click();
+            driver.findElement(By.xpath("//a[@href='/product_details/43']")).click();
+        }else{
+            System.out.println("product already added in cart");
+        }
+        driver.findElement(By.xpath("//input[@id='quantity']//following::button[1]")).click();
+        Thread.sleep(2000);
+        driver.findElement(By.xpath("//button[text()='Continue Shopping']")).click();
+        driver.findElement(By.xpath("//div[@class=\"col-sm-8\"]/div/ul/li/a[@href=\"/view_cart\"]")).click();
+        String baskettotal =driver.findElement(By.xpath("//p[@class='cart_total_price']")).getText();
+        System.out.println("basket total :"+baskettotal);
+        driver.findElement(By.xpath("//a[text()='Proceed To Checkout']")).click();
+        Thread.sleep(2000);
+        System.out.println(driver.getTitle());
+        if(driver.getTitle().equals("Automation Exercise - Checkout")){
+            System.out.println("User is on checkout page");
+        }else{
+            System.out.println("User is not on checkout page");
+        }
+       driver.findElement(By.xpath("//textarea[@name='message']")).sendKeys("Demo testing to improve automation skills");
+        driver.findElement(By.xpath("//a[text()='Place Order']")).click();
+        Thread.sleep(2000);
+        System.out.println(driver.getTitle());
+        if(driver.getTitle().equals("Automation Exercise - Payment")){
+            System.out.println("User is on payment page");
+        }else{
+            System.out.println("User is not payment page");
+        }
+        driver.findElement(By.name("name_on_card")).sendKeys("Test Users");
+        driver.findElement(By.name("card_number")).sendKeys("4514732124");
+        driver.findElement(By.name("cvc")).sendKeys("113");
+        driver.findElement(By.name("expiry_month")).sendKeys("8");
+        driver.findElement(By.name("expiry_year")).sendKeys("2026");
+        Thread.sleep(2000);
+        driver.findElement(By.xpath("//button[text()='Pay and Confirm Order']")).click();
+        Thread.sleep(3000);
+        if(driver.getTitle().equals("Automation Exercise - Order Placed")){
+            System.out.println("Order placed sucessfully");
+        }else{
+            System.out.println("Order not placed");
+        }
+        driver.findElement(By.xpath("//a[text()='Download Invoice']")).click();
+
+
+    }
+    @Then("Checks total no of Tshirts availabile")
+    public void checks_total_no_of_tshirts_availabile() {
+       List<WebElement> tshirts = driver.findElements(By.xpath("//div[@class='productinfo text-center']//p"));
+        System.out.println("Total tshirts :"+tshirts.size());
+        for(int i=0;i< tshirts.size();i++){
+            System.out.println(tshirts.get(i).getText());
+        }
+
     }
 
+    @Then("User enters emailid {string} in respective field")
+    public void user_enters_emailid_in_respective_field(String emailid) {
+        driver.findElement(By.id("susbscribe_email")).sendKeys(emailid);
+        driver.findElement(By.id("subscribe")).click();
+
+    }
+    @Then("User clicks on product option")
+    public void user_clicks_on_product_option() {
+        driver.findElement(By.xpath("//a[@href='/products']")).click();
+        driver.findElement(By.id("search_product")).sendKeys("Tshirts");
+        driver.findElement(By.id("submit_search")).click();
+    }
 }

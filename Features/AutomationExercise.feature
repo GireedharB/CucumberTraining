@@ -1,3 +1,4 @@
+@all
 Feature: Automation Exercise Website
 
   Background:
@@ -15,6 +16,7 @@ Feature: Automation Exercise Website
    Then User verify title of product page
     And User clicks on men category
     And Select Tshirts sub category
+     Then Checks total no of Tshirts availabile
 
   @Sc3
   Scenario: All broken links on Automation Exercise page.
@@ -23,6 +25,18 @@ Feature: Automation Exercise Website
   @Sc4
   Scenario: Contact us page of Automation Exercise.
     Then User clicks on contact us link
+
+  @Sc5
+  Scenario:Cart functionailty Automation Exercise.
+    Then User clicks on cart  link
+
+  @Sc6
+  Scenario:Email subscrption functionailty Automation Exercise.
+    Then User enters emailid "test@gmail.com" in respective field
+
+  @Sc7
+  Scenario: Product Search functionality of Automation Exercise.
+      Then User clicks on product option
 
 
 
