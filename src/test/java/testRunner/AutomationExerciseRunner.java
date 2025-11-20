@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
         features = {"C:\\Users\\ADMIN\\IdeaProjects\\CucumberBDDFramework\\Features\\AutomationExercise.feature"},
         glue = {"stepDefinition","Hooks"},
         dryRun = false,
-        tags = "@Sc4",
+        tags = "@all",
         monochrome = true,
         plugin = {"pretty",
                 "html:target/cucumber-reports.html",
